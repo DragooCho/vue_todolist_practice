@@ -1,13 +1,78 @@
 <template>
-  <div>input</div>
+  <div class="inputBox shadow">
+    <input
+      type="text"
+      v-model="newTodoItem"
+      placeholder="Type what you have to do"
+      v-on:keyup.enter="addTodo"
+    />
+    <span class="addContainer" v-on:click="addTodo">
+      <i class="addBtn material-icons">add</i>
+    </span>
+
+    <modal v-if="showModal" @close="showModal = false">
+      <h2 slot="header">경고</h2>
+      <span slot="footer" @click="showModal = false">
+        할 일을 입력하세요.
+        <i class="closeModalBtn material-icons">close</i>
+      </span>
+    </modal>
+  </div>
 </template>
 
 <script>
-export default {
+import Modal from "./common/Modal.vue";
 
-}
+export default {
+  components: { Modal: Modal },
+  props: ["propsdata"],
+  data() {
+    return {
+      newTodoItem: "",
+      showModal: false
+    };
+  },
+  methods: {
+    addTodo() {
+      if (this.newTodoItem !== "") {
+        let value = this.newTodoItem && this.newTodoItem.trim();
+        this.$emit("addTodo", value);
+        this.clearInput();
+      } else {
+        this.showModal = !this.showModal;
+      }
+    },
+    clearInput() {
+      this.newTodoItem = "";
+    }
+  }
+};
 </script>
 
-<style>
+<style scoped>
+input:focus {
+  outline: none;
+}
+.inputBox {
+  background: white;
+  height: 50px;
+  line-height: 50px;
+  border-radius: 5px;
+}
+.inputBox input {
+  border-style: none;
+  font-size: 0.9rem;
+}
 
+.addContainer {
+  float: right;
+  background: linear-gradient(to right, #6478fb, #8763fb);
+  display: inline-block;
+  width: 3rem;
+  border-radius: 0 5px 5px 0;
+}
+.addBtn {
+  color: rgb(255, 255, 255);
+  vertical-align: middle;
+}
 </style>
