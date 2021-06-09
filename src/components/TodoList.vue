@@ -5,6 +5,7 @@
         <i class="material-icons checkBtn">
           check
         </i>
+
         {{ todoItem }}
         <span
           class="removeBtn"
@@ -26,6 +27,9 @@ export default {
   methods: {
     removeTodo(todoItem, index) {
       this.$emit("removeTodo", todoItem, index);
+    },
+    completeTodo(todoItem, index) {
+      this.$emit("completeTodo", todoItem, index);
     }
   }
 };
