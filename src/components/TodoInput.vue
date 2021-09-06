@@ -65,14 +65,14 @@ input:focus {
 }
 
 .addContainer {
-  float: right;
+  /* float: right; */
   background: linear-gradient(to right, #6478fb, #8763fb);
   display: inline-block;
   width: 3rem;
   border-radius: 0 5px 5px 0;
 }
 .addBtn {
-  color: rgb(255, 255, 255);
+  color: rgb(133, 84, 84);
   vertical-align: middle;
 }
 </style>
