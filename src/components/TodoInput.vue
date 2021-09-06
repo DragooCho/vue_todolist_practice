@@ -65,7 +65,7 @@ input:focus {
 }
 
 .addContainer {
-  /* float: right; */
+  float: right;
   background: linear-gradient(to right, #6478fb, #8763fb);
   display: inline-block;
   width: 3rem;
