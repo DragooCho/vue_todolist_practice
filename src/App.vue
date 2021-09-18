@@ -2,7 +2,11 @@
   <div id="app">
     <TodoHeader />
     <TodoInput v-on:addTodo="addTodo" />
-    <TodoList v-bind:propsdata="todoItems" @removeTodo="removeTodo" />
+    <TodoList
+      v-bind:propsdata="todoItems"
+      @removeTodo="removeTodo"
+      @completeTodo="completeTodo"
+    />
     <TodoFooter v-on:removeAll="clearAll" />
   </div>
 </template>
@@ -12,6 +16,8 @@ import TodoHeader from "./components/TodoHeader.vue";
 import TodoInput from "./components/TodoInput.vue";
 import TodoList from "./components/TodoList.vue";
 import TodoFooter from "./components/TodoFooter.vue";
+
+import setDateNumber from "./assets/function_utilities/time_utilities";
 
 export default {
   data() {
@@ -38,6 +44,12 @@ export default {
     removeTodo(todoItem, index) {
       localStorage.removeItem(todoItem);
       this.todoItems.splice(index, 1);
+    },
+    completeTodo(todoItem, index) {
+      // localStorage.removeItem(todoItem);
+      // this.todoItems.splice(index, 1);
+      console.log(todoItem, index);
+      // console.log(`${setDateNumber}`);
     }
   },
   components: {

@@ -2,9 +2,15 @@
   <section>
     <transition-group name="list" tag="ul">
       <li v-for="(todoItem, index) in propsdata" :key="todoItem" class="shadow">
-        <i class="material-icons checkBtn">
-          check
-        </i>
+        <span
+          class="completeBtn"
+          type="button"
+          @click="completeTodo(todoItem, index)"
+        >
+          <i class="material-icons checkBtn">
+            check
+          </i>
+        </span>
 
         {{ todoItem }}
         <span
